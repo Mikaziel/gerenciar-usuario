@@ -6,7 +6,7 @@
     <title>Login de Usuário</title>
     <link rel="stylesheet" href="style_login.css" />
     <style>
-      /* Estilos adicionais para o 'olhinho' - idealmente no style_login.css */
+     
       .password-container {
         position: relative;
         width: 100%;
@@ -14,8 +14,8 @@
       }
 
       .password-container input {
-        width: calc(100% - 40px); /* Ajusta para o botão */
-        padding-right: 35px; /* Espaço para o ícone */
+        width: calc(100% - 40px); 
+        padding-right: 35px; 
       }
 
       .toggle-password {
@@ -24,9 +24,9 @@
         top: 50%;
         transform: translateY(
           calc(-50% + 15px)
-        ); /* Ajusta a posição vertical */
+        ); 
         cursor: pointer;
-        color: #666; /* Cor do ícone */
+        color: #666; 
         user-select: none;
         display: flex;
         justify-content: center;
@@ -110,7 +110,6 @@
             : "password";
         senhaInputLogin.setAttribute("type", type);
 
-        // Alterna o SVG baseado no tipo
         if (type === "password") {
           this.innerHTML = `
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
