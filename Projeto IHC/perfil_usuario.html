@@ -107,7 +107,6 @@
         );
         const edicaoPerfil = document.getElementById("edicaoPerfil");
 
-        // Elementos para exibição
         const perfilNomeExibicao =
           document.getElementById("perfilNomeExibicao");
         const perfilNomeCompleto =
@@ -119,7 +118,7 @@
         );
         const perfilEndereco = document.getElementById("perfilEndereco");
 
-        // Elementos para edição
+      
         const editarNome = document.getElementById("editarNome");
         const editarSobrenome = document.getElementById("editarSobrenome");
         const editarNomeExibicao =
@@ -135,9 +134,8 @@
         const btnEditarPerfil = document.getElementById("btnEditarPerfil");
         const btnCancelarEdicao = document.getElementById("btnCancelarEdicao");
         const btnSair = document.getElementById("btnSair");
-        const btnExcluirConta = document.getElementById("btnExcluirConta"); // Botão novo
+        const btnExcluirConta = document.getElementById("btnExcluirConta"); 
 
-        // Função para exibir dados do usuário
         function exibirDadosUsuario() {
           perfilNomeExibicao.textContent =
             usuarioLogado.nomeExibicao || "Não definido";
@@ -152,7 +150,6 @@
             usuarioLogado.endereco || "Não informado";
         }
 
-        // Função para formatar gênero
         function formatarGenero(genero) {
           switch (genero) {
             case "masculino":
@@ -166,7 +163,6 @@
           }
         }
 
-        // Função para preencher o formulário de edição
         function preencherFormularioEdicao() {
           editarNome.value = usuarioLogado.nome;
           editarSobrenome.value = usuarioLogado.sobrenome;
@@ -177,7 +173,6 @@
           editarEndereco.value = usuarioLogado.endereco;
         }
 
-        // Funções para alternar a visibilidade das seções
         function mostrarRepresentacao() {
           representacaoPerfil.style.display = "block";
           edicaoPerfil.style.display = "none";
@@ -204,7 +199,7 @@
           mostrarRepresentacao();
         });
 
-        // Lógica para Salvar Alterações
+
         formEditarPerfil.addEventListener("submit", function (e) {
           e.preventDefault();
 
@@ -236,13 +231,13 @@
           }
         });
 
-        // Lógica para Sair da Conta (Logout)
+      
         btnSair.addEventListener("click", function () {
           localStorage.removeItem("usuarioLogado");
           window.location.href = "login.html";
         });
 
-        // --- NOVA LÓGICA PARA EXCLUIR CONTA ---
+    
         btnExcluirConta.addEventListener("click", function () {
           if (
             confirm(
