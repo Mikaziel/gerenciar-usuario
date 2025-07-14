@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meu Perfil</title>
+    <link rel="stylesheet" href="style_login.css" />
+    <link rel="stylesheet" href="style_perfil.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Meu Perfil</h1>
+
+      <section id="representacaoPerfil" class="perfil-section">
+        <h2>Informações do Usuário</h2>
+        <div class="info-item">
+          <strong>Nome de Exibição:</strong>
+          <span id="perfilNomeExibicao"></span>
+        </div>
+        <div class="info-item">
+          <strong>Nome Completo:</strong> <span id="perfilNomeCompleto"></span>
+        </div>
+        <div class="info-item">
+          <strong>E-mail:</strong> <span id="perfilEmail"></span>
+        </div>
+        <div class="info-item">
+          <strong>Gênero:</strong> <span id="perfilGenero"></span>
+        </div>
+        <div class="info-item">
+          <strong>Data de Nascimento:</strong>
+          <span id="perfilDataNascimento"></span>
+        </div>
+        <div class="info-item">
+          <strong>Endereço:</strong> <span id="perfilEndereco"></span>
+        </div>
+        <button id="btnEditarPerfil">Editar Perfil</button>
+      </section>
+
+      <section id="edicaoPerfil" class="perfil-section">
+        <h2>Editar Perfil</h2>
+        <form id="formEditarPerfil">
+          <label for="editarNome">Nome:</label>
+          <input type="text" id="editarNome" name="editarNome" />
+
+          <label for="editarSobrenome">Sobrenome:</label>
+          <input type="text" id="editarSobrenome" name="editarSobrenome" />
+
+          <label for="editarNomeExibicao">Nome de Exibição:</label>
+          <input
+            type="text"
+            id="editarNomeExibicao"
+            name="editarNomeExibicao"
+          />
+
+          <label for="editarEmail">E-mail (não editável):</label>
+          <input type="email" id="editarEmail" name="editarEmail" disabled />
+          <label for="editarGenero">Gênero:</label>
+          <select id="editarGenero" name="editarGenero">
+            <option value="">Selecione</option>
+            <option value="masculino">Masculino</option>
+            <option value="feminino">Feminino</option>
+            <option value="nao_informar">Prefiro não informar</option>
+          </select>
+
+          <label for="editarDataNascimento">Data de Nascimento:</label>
+          <input
+            type="date"
+            id="editarDataNascimento"
+            name="editarDataNascimento"
+          />
+
+          <label for="editarEndereco">Endereço:</label>
+          <textarea
+            id="editarEndereco"
+            name="editarEndereco"
+            rows="3"
+          ></textarea>
+
+          <div class="form-actions">
+            <div>
+              <button type="submit">Salvar Alterações</button>
+              <button
+                type="button"
+                id="btnCancelarEdicao"
+                class="cancel-button"
+              >
+                Cancelar
+              </button>
+            </div>
+            <button type="button" id="btnExcluirConta" class="delete-button">
+              Excluir Conta
+            </button>
+          </div>
+        </form>
+        <p id="mensagemPerfil"></p>
+      </section>
+
+      <button id="btnSair" class="logout-button">Sair da Conta</button>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+        const mensagemPerfil = document.getElementById("mensagemPerfil");
+        const representacaoPerfil = document.getElementById(
+          "representacaoPerfil"
+        );
+        const edicaoPerfil = document.getElementById("edicaoPerfil");
+
+        // Elementos para exibição
+        const perfilNomeExibicao =
+          document.getElementById("perfilNomeExibicao");
+        const perfilNomeCompleto =
+          document.getElementById("perfilNomeCompleto");
+        const perfilEmail = document.getElementById("perfilEmail");
+        const perfilGenero = document.getElementById("perfilGenero");
+        const perfilDataNascimento = document.getElementById(
+          "perfilDataNascimento"
+        );
+        const perfilEndereco = document.getElementById("perfilEndereco");
+
+        // Elementos para edição
+        const editarNome = document.getElementById("editarNome");
+        const editarSobrenome = document.getElementById("editarSobrenome");
+        const editarNomeExibicao =
+          document.getElementById("editarNomeExibicao");
+        const editarEmail = document.getElementById("editarEmail");
+        const editarGenero = document.getElementById("editarGenero");
+        const editarDataNascimento = document.getElementById(
+          "editarDataNascimento"
+        );
+        const editarEndereco = document.getElementById("editarEndereco");
+
+        const formEditarPerfil = document.getElementById("formEditarPerfil");
+        const btnEditarPerfil = document.getElementById("btnEditarPerfil");
+        const btnCancelarEdicao = document.getElementById("btnCancelarEdicao");
+        const btnSair = document.getElementById("btnSair");
+        const btnExcluirConta = document.getElementById("btnExcluirConta"); // Botão novo
+
+        // Função para exibir dados do usuário
+        function exibirDadosUsuario() {
+          perfilNomeExibicao.textContent =
+            usuarioLogado.nomeExibicao || "Não definido";
+          perfilNomeCompleto.textContent = `${usuarioLogado.nome} ${usuarioLogado.sobrenome}`;
+          perfilEmail.textContent = usuarioLogado.email;
+          perfilGenero.textContent = usuarioLogado.genero
+            ? formatarGenero(usuarioLogado.genero)
+            : "Não informado";
+          perfilDataNascimento.textContent =
+            usuarioLogado.dataNascimento || "Não informado";
+          perfilEndereco.textContent =
+            usuarioLogado.endereco || "Não informado";
+        }
+
+        // Função para formatar gênero
+        function formatarGenero(genero) {
+          switch (genero) {
+            case "masculino":
+              return "Masculino";
+            case "feminino":
+              return "Feminino";
+            case "nao_informar":
+              return "Prefiro não informar";
+            default:
+              return "Não informado";
+          }
+        }
+
+        // Função para preencher o formulário de edição
+        function preencherFormularioEdicao() {
+          editarNome.value = usuarioLogado.nome;
+          editarSobrenome.value = usuarioLogado.sobrenome;
+          editarNomeExibicao.value = usuarioLogado.nomeExibicao;
+          editarEmail.value = usuarioLogado.email;
+          editarGenero.value = usuarioLogado.genero;
+          editarDataNascimento.value = usuarioLogado.dataNascimento;
+          editarEndereco.value = usuarioLogado.endereco;
+        }
+
+        // Funções para alternar a visibilidade das seções
+        function mostrarRepresentacao() {
+          representacaoPerfil.style.display = "block";
+          edicaoPerfil.style.display = "none";
+        }
+
+        function mostrarEdicao() {
+          representacaoPerfil.style.display = "none";
+          edicaoPerfil.style.display = "block";
+          preencherFormularioEdicao();
+        }
+
+        if (!usuarioLogado) {
+          window.location.href = "login.html";
+          return;
+        }
+
+        mostrarRepresentacao();
+        exibirDadosUsuario();
+
+        btnEditarPerfil.addEventListener("click", mostrarEdicao);
+
+        btnCancelarEdicao.addEventListener("click", function () {
+          mensagemPerfil.textContent = "";
+          mostrarRepresentacao();
+        });
+
+        // Lógica para Salvar Alterações
+        formEditarPerfil.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          usuarioLogado.nome = editarNome.value;
+          usuarioLogado.sobrenome = editarSobrenome.value;
+          usuarioLogado.nomeExibicao = editarNomeExibicao.value;
+          usuarioLogado.genero = editarGenero.value;
+          usuarioLogado.dataNascimento = editarDataNascimento.value;
+          usuarioLogado.endereco = editarEndereco.value;
+
+          localStorage.setItem("usuarioLogado", JSON.stringify(usuarioLogado));
+
+          const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+          const indiceUsuario = usuarios.findIndex(
+            (u) => u.id === usuarioLogado.id
+          );
+
+          if (indiceUsuario !== -1) {
+            usuarios[indiceUsuario] = usuarioLogado;
+            localStorage.setItem("usuarios", JSON.stringify(usuarios));
+            mensagemPerfil.textContent = "Perfil atualizado com sucesso!";
+            mensagemPerfil.style.color = "green";
+            exibirDadosUsuario();
+            setTimeout(mostrarRepresentacao, 1500);
+          } else {
+            mensagemPerfil.textContent =
+              "Erro: Usuário não encontrado para atualização.";
+            mensagemPerfil.style.color = "red";
+          }
+        });
+
+        // Lógica para Sair da Conta (Logout)
+        btnSair.addEventListener("click", function () {
+          localStorage.removeItem("usuarioLogado");
+          window.location.href = "login.html";
+        });
+
+        // --- NOVA LÓGICA PARA EXCLUIR CONTA ---
+        btnExcluirConta.addEventListener("click", function () {
+          if (
+            confirm(
+              "Tem certeza que deseja excluir sua conta? Esta ação é irreversível."
+            )
+          ) {
+            if (
+              confirm(
+                "Confirmação final: Todos os seus dados serão apagados permanentemente. Deseja continuar?"
+              )
+            ) {
+              const usuarios =
+                JSON.parse(localStorage.getItem("usuarios")) || [];
+              const novosUsuarios = usuarios.filter(
+                (u) => u.id !== usuarioLogado.id
+              );
+
+              localStorage.setItem("usuarios", JSON.stringify(novosUsuarios));
+              localStorage.removeItem("usuarioLogado");
+
+              alert("Sua conta foi excluída com sucesso.");
+              window.location.href = "login.html";
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
