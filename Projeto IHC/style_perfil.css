@@ -1,8 +1,8 @@
-/* style_perfil.css */
+
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #e0f2f7; /* Um azul claro mais suave */
+  background-color: #e0f2f7; 
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -15,37 +15,37 @@ body {
 .container {
   background-color: #ffffff;
   padding: 30px;
-  border-radius: 12px; /* Cantos mais arredondados */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
+  border-radius: 12px; 
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
   width: 100%;
-  max-width: 650px; /* Maior largura para acomodar mais campos */
+  max-width: 650px; 
   text-align: center;
   margin-top: 50px;
-  overflow: hidden; /* Garante que elementos filhos respeitem o container */
+  overflow: hidden; 
 }
 
 h1,
 h2 {
-  color: #2c3e50; /* Cor de título mais escura */
+  color: #2c3e50; 
   margin-bottom: 25px;
-  border-bottom: 2px solid #3498db; /* Linha azul para destaque */
+  border-bottom: 2px solid #3498db; 
   padding-bottom: 10px;
-  display: inline-block; /* Para a linha ficar apenas no texto */
+  display: inline-block; 
 }
 
 .perfil-section {
-  background-color: #f8fcfd; /* Fundo levemente diferente para as seções */
+  background-color: #f8fcfd; 
   border: 1px solid #d0efff;
   border-radius: 8px;
   padding: 25px;
   margin-bottom: 25px;
-  text-align: left; /* Alinha o texto das seções à esquerda */
+  text-align: left; 
 }
 
-/* Estilos para a seção de representação */
+
 #representacaoPerfil h2 {
   color: #3498db;
-  border-bottom: none; /* Não precisa de linha extra aqui */
+  border-bottom: none; 
   margin-bottom: 15px;
 }
 
@@ -54,19 +54,19 @@ h2 {
   font-size: 1.1em;
   line-height: 1.5;
   color: #555;
-  display: flex; /* Para alinhar o strong e o span */
+  display: flex; 
   align-items: flex-start;
 }
 
 .info-item strong {
-  color: #34495e; /* Cor para os rótulos dos dados */
+  color: #34495e; 
   display: inline-block;
-  min-width: 150px; /* Garante alinhamento dos rótulos */
+  min-width: 150px; 
   margin-right: 10px;
-  font-weight: 600; /* Um pouco mais de peso */
+  font-weight: 600; 
 }
 
-/* Estilos para o formulário de edição */
+
 #edicaoPerfil h2 {
   color: #3498db;
   border-bottom: none;
@@ -76,7 +76,7 @@ h2 {
 form label {
   display: block;
   margin-bottom: 8px;
-  color: #4a6c81; /* Cor para os rótulos do formulário */
+  color: #4a6c81; 
   text-align: left;
   font-weight: bold;
 }
@@ -86,38 +86,38 @@ form input[type="email"],
 form input[type="date"],
 form select,
 form textarea {
-  width: calc(100% - 22px); /* Ajusta para padding e borda */
+  width: calc(100% - 22px); 
   padding: 11px;
   margin-bottom: 18px;
-  border: 1px solid #cce7ff; /* Borda mais suave */
-  border-radius: 6px; /* Cantos ligeiramente mais arredondados */
+  border: 1px solid #cce7ff; 
+  border-radius: 6px; 
   box-sizing: border-box;
   font-size: 1em;
-  background-color: #fdfefe; /* Fundo levemente diferente para inputs */
+  background-color: #fdfefe; 
   color: #333;
 }
 
 form input[type="email"][disabled] {
-  background-color: #e9ecef; /* Cor diferente para campo desabilitado */
+  background-color: #e9ecef; 
   cursor: not-allowed;
 }
 
 form select {
-  appearance: none; /* Remove estilo padrão do select em alguns navegadores */
+  appearance: none; 
   background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2069.9a14.7%2014.7%200%200%200%20-20.8%200L146.2%20190.3%2026%2069.9a14.7%2014.7%200%200%200%20-20.8%2020.8L135.8%20211.2a14.7%2014.7%200%200%200%2020.8%200L287%2090.7a14.7%2014.7%200%200%200%200-20.8z%22%2F%3E%3C%2Fsvg%3E");
   background-repeat: no-repeat;
   background-position: right 10px top 50%;
   background-size: 12px;
-  padding-right: 30px; /* Espaço para a seta */
+  padding-right: 30px; 
 }
 
 form textarea {
-  resize: vertical; /* Permite redimensionar verticalmente */
+  resize: vertical; 
 }
 
 form button,
 .logout-button {
-  background-color: #28a745; /* Botão de salvar verde */
+  background-color: #28a745; 
   color: white;
   padding: 12px 25px;
   border: none;
@@ -126,8 +126,8 @@ form button,
   font-size: 1.05em;
   margin-top: 15px;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  width: auto; /* Deixa o botão se ajustar ao conteúdo */
-  display: inline-block; /* Para que os botões fiquem lado a lado se couberem */
+  width: auto; 
+  display: inline-block; 
   min-width: 120px;
   margin-right: 10px;
 }
@@ -135,11 +135,11 @@ form button,
 form button:hover,
 .logout-button:hover {
   background-color: #218838;
-  transform: translateY(-2px); /* Efeito de elevação ao passar o mouse */
+  transform: translateY(-2px); 
 }
 
 .cancel-button {
-  background-color: #6c757d; /* Botão de cancelar cinza */
+  background-color: #6c757d; 
 }
 
 .cancel-button:hover {
@@ -147,8 +147,8 @@ form button:hover,
 }
 
 #btnSair.logout-button {
-  /* Estilo específico para o botão de sair */
-  background-color: #dc3545; /* Cor vermelha para sair */
+  
+  background-color: #dc3545; 
   margin-top: 30px;
   width: 100%;
 }
@@ -161,10 +161,10 @@ form button:hover,
   margin-top: 20px;
   font-weight: bold;
   font-size: 1.1em;
-  color: #007bff; /* Cor padrão para mensagens */
+  color: #007bff; 
 }
 
-/* Esconder a seção de edição por padrão */
+
 #edicaoPerfil {
   display: none;
 }
