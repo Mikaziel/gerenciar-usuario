@@ -5,7 +5,7 @@ body {
   padding: 0;
 
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #e0f2f7; /* Um azul claro mais suave */
+  background-color: #e0f2f7; 
   display: flex;
   justify-content: center;
   align-items: flex-start;
